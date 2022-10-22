@@ -52,8 +52,8 @@ public class LivroService {
         return factory.toDto(editarLivro);
     }
 
-    public void deletarLivro(LivroDto dto) {
-        Livro excluirLivro = buscarLivroPorId(dto.getId());
+    public void deletarLivro(Long id) {
+        Livro excluirLivro = buscarLivroPorId(id);
         repository.delete(excluirLivro);
     }
 

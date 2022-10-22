@@ -32,16 +32,6 @@ public class LivroFactory {
                 .build();
     }
 
-    public Livro toLivro(LivroDto dto){
-        return Livro.builder()
-                .id(dto.getId())
-                .nome(dto.getNome())
-                .preco(dto.getPreco())
-                .anoPublicacao(dto.getAnoPublicacao())
-                .isbn(dto.getIsbn())
-                .build();
-    }
-
     public Livro toLivro(LivroDtoSalvar dto){
         return Livro.builder()
                 .nome(dto.getNome())

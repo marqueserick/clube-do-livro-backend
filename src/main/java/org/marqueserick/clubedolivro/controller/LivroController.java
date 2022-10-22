@@ -48,9 +48,10 @@ public class LivroController {
     }
 
     @DELETE
+    @Path("/{id}")
     @Operation(description = "Exclui um livro existente", summary = "deletar livro")
-    public void deletarLivro(LivroDto dto){
-        service.deletarLivro(dto);
+    public void deletarLivro(@PathParam("id") Long id){
+        service.deletarLivro(id);
     }
 
 }

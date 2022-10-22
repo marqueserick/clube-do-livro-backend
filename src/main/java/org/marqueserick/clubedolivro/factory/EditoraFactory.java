@@ -12,16 +12,6 @@ import java.util.stream.Collectors;
 @Singleton
 public class EditoraFactory {
 
-    public Editora toEditora(EditoraDto dto){
-        return Editora.builder()
-                .id(dto.getId())
-                .nome(dto.getNome())
-                .email(dto.getEmail())
-                .nomeContato(dto.getNomeContato())
-                .telefonePrincipal(dto.getTelefonePrincipal())
-                .telefoneAuxiliar(dto.getTelefoneAuxiliar())
-                .build();
-    }
     public Editora toEditora(EditoraLivroDto dto){
         return Editora.builder()
                 .id(dto.getId())

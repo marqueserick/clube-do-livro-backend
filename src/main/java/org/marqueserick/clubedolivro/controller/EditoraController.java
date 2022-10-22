@@ -2,6 +2,7 @@ package org.marqueserick.clubedolivro.controller;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.editora.EditoraDto;
+import org.marqueserick.clubedolivro.dto.editora.EditoraDtoEditar;
 import org.marqueserick.clubedolivro.dto.editora.EditoraDtoSalvar;
 import org.marqueserick.clubedolivro.service.EditoraService;
 
@@ -38,5 +39,18 @@ public class EditoraController {
     @Operation(description = "Adiciona uma nova editora ao sistema", summary = "adicionar editora")
     public EditoraDto novaEditora(EditoraDtoSalvar dto){
         return service.novaEditora(dto);
+    }
+
+    @PUT
+    @Operation(description = "Edita uma editora existente", summary = "editar editora")
+    public EditoraDto editaEditora(EditoraDtoEditar dto){
+        return service.editarEditora(dto);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Operation(description = "Deleta um editora existente", summary = "deletar editora")
+    public void deletarEditora(@PathParam("id") Long id){
+        service.deletarEditora(id);
     }
 }

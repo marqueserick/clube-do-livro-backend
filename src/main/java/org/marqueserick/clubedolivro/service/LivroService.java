@@ -5,9 +5,7 @@ import org.marqueserick.clubedolivro.dto.livro.LivroDtoEditar;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoSalvar;
 import org.marqueserick.clubedolivro.factory.EditoraFactory;
 import org.marqueserick.clubedolivro.factory.LivroFactory;
-import org.marqueserick.clubedolivro.model.Editora;
 import org.marqueserick.clubedolivro.model.Livro;
-import org.marqueserick.clubedolivro.repository.EditoraRepository;
 import org.marqueserick.clubedolivro.repository.LivroRepository;
 
 import javax.enterprise.context.ApplicationScoped;

@@ -1,7 +1,6 @@
 package org.marqueserick.clubedolivro.factory;
 
 import org.marqueserick.clubedolivro.dto.livro.LivroDto;
-import org.marqueserick.clubedolivro.dto.livro.LivroDtoEditar;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoSalvar;
 import org.marqueserick.clubedolivro.model.Livro;
 

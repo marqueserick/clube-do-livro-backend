@@ -31,14 +31,14 @@ public class EstoqueController {
     @Path("/porEditora")
     @Operation(description = "lista quantidade de todos os livros por editora", summary = "listar por editora")
     public List<EstoqueDto> listarEstoquePorEditora(@QueryParam("cod")Long editora){
-        return service.listarEstoqueBusca("cod_editora", editora);
+        return service.listarEstoquePorEditora("cod_editora", editora);
     }
 
     @GET
     @Path("/porLivro")
     @Operation(description = "lista quantidade por livro", summary = "listar por livro")
-    public List<EstoqueDto> listarEstoquePorLivro(@QueryParam("cod")Long livro){
-        return service.listarEstoqueBusca("cod_livro", livro);
+    public EstoqueDto listarEstoquePorLivro(@QueryParam("cod")Long livro){
+        return service.listarEstoquePorLivro("cod_livro", livro);
     }
 
     @POST

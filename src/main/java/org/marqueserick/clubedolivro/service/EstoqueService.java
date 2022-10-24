@@ -34,23 +34,26 @@ public class EstoqueService {
         return factory.toDtoList(repository.listAll());
     }
 
-    public List<EstoqueDto> listarEstoqueBusca(String campo, Long editora) {
+    public List<EstoqueDto> listarEstoquePorEditora(String campo, Long editora) {
        PanacheQuery<Estoque> estoquePorEditora = repository.find(campo,editora);
        return factory.toDtoList(estoquePorEditora.stream().collect(Collectors.toList()));
     }
 
+    public EstoqueDto listarEstoquePorLivro(String campo, Long livro) {
+        return factory.toDto(buscarPorLivro(livro));
+    }
+
     public EstoqueDto alterarQuantidadeLivro(Long livro, Acao acao, Integer quantidade) {
         Estoque livroSelecionado = buscarPorLivro(livro);
-        if( livroSelecionado == null) throw new NotFoundException();
-
         livroSelecionado.setQuantidade(atualizarQuantidade(acao,quantidade, livroSelecionado.getQuantidade()));
         repository.persist(livroSelecionado);
         return factory.toDto(livroSelecionado);
     }
 
     public EstoqueDto adicionarLivroEstoque(EstoqueDto dto) {
-        boolean existeLivroEmEstoque = buscarPorLivro(dto.getLivro()) != null;
-        if(!existeLivroEmEstoque){
+        try{
+            buscarPorLivro(dto.getLivro());
+        }catch (NotFoundException e){
              existeLivro(dto.getLivro());
              Estoque novoEstoque = factory.toEstoque(dto);
              repository.persist(novoEstoque);
@@ -72,7 +75,7 @@ public class EstoqueService {
     private Estoque buscarPorLivro(Long livro) {
         Optional<Estoque> livroSelecionado =  repository.find("cod_livro", livro).firstResultOptional();
         if(livroSelecionado.isPresent()) return livroSelecionado.get();
-        else return null;
+        throw new NotFoundException();
     }
 
 

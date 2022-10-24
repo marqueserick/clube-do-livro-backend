@@ -24,26 +24,26 @@ public class EditoraController {
 
     @GET
     @Operation(description = "Lista todas as editoras cadastradas no sistema", summary = "listar editoras")
-    public List<EditoraDto> listaEditoras(){
+    public List<EditoraDto> listarEditoras(){
         return service.listaEditoras();
     }
 
     @GET
     @Path("/{id}")
     @Operation(description = "Lista editora por ID", summary = "listar por ID")
-    public EditoraDto listaEditora(@PathParam("id") Long id){
+    public EditoraDto listarEditora(@PathParam("id") Long id){
         return service.listaEditora(id);
     }
 
     @POST
     @Operation(description = "Adiciona uma nova editora ao sistema", summary = "adicionar editora")
-    public EditoraDto novaEditora(EditoraDtoSalvar dto){
-        return service.novaEditora(dto);
+    public EditoraDto adicionarEditora(EditoraDtoSalvar dto){
+        return service.adicionarEditora(dto);
     }
 
     @PUT
     @Operation(description = "Edita uma editora existente", summary = "editar editora")
-    public EditoraDto editaEditora(EditoraDtoEditar dto){
+    public EditoraDto editarEditora(EditoraDtoEditar dto){
         return service.editarEditora(dto);
     }
 

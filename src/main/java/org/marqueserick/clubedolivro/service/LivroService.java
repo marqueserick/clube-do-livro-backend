@@ -20,12 +20,9 @@ public class LivroService {
     private LivroRepository repository;
     private LivroFactory factory;
 
-    private EditoraService editoraService;
-
-    public LivroService(LivroRepository livroRepository, LivroFactory livroFactory, EditoraService editoraService){
+    public LivroService(LivroRepository livroRepository, LivroFactory livroFactory){
         this.repository = livroRepository;
         this.factory = livroFactory;
-        this.editoraService = editoraService;
     }
 
     public List<LivroDto> listarLivros(){

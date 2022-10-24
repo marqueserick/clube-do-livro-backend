@@ -7,3 +7,6 @@ insert into livro values (1,2020,'999888777765','O primeiro livro do mundo',19.9
 (2,2018,'999888777766','O segredo',24.5,1),
 (3,2019,'999888777755','Dicas de Inglês',39,2);
 
+insert into estoque values (1,1,13),
+(1,2,5);
+

@@ -33,7 +33,7 @@ public class EditoraService {
         return factory.toDtoDetalhes(buscarEditoraPorId(id));
     }
 
-    public EditoraDto novaEditora(EditoraDtoSalvar dto) {
+    public EditoraDto adicionarEditora(EditoraDtoSalvar dto) {
         Editora editora = factory.toEditora(dto);
         repository.persist(editora);
         return factory.toDto(editora);

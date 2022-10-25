@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "livro")
@@ -36,9 +37,9 @@ public class Livro {
     @JoinColumn(name = "cod_editora", nullable = false)
     private Editora editora;
 
+    @ManyToMany(mappedBy = "livros")
+    private List<Categoria> categorias;
 
-
-    //categoria
     //autores
 
 

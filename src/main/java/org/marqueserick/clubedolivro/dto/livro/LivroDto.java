@@ -2,11 +2,13 @@ package org.marqueserick.clubedolivro.dto.livro;
 
 import io.smallrye.common.constraint.NotNull;
 import lombok.*;
+import org.marqueserick.clubedolivro.dto.categoria.CategoriaDto;
 import org.marqueserick.clubedolivro.dto.editora.EditoraDto;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,5 +37,7 @@ public class LivroDto {
 
     @NotNull
     private EditoraDto editora;
+
+    private List<CategoriaDto> categorias;
 
 }

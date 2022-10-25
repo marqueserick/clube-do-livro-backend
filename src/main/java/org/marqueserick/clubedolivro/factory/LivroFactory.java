@@ -42,6 +42,12 @@ public class LivroFactory {
                 .build();
     }
 
+    public Livro toLivro(LivroDto dto){
+        return Livro.builder()
+                .id(dto.getId())
+                .build();
+    }
+
     public List<LivroDto> toDtoList(List<Livro> livros){
         return livros.stream().map(this::toDto).collect(Collectors.toList());
     }

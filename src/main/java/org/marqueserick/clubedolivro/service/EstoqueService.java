@@ -5,7 +5,6 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import org.marqueserick.clubedolivro.dto.estoque.EstoqueDto;
 import org.marqueserick.clubedolivro.factory.EstoqueFactory;
 import org.marqueserick.clubedolivro.model.Estoque;
-import org.marqueserick.clubedolivro.model.EstoqueLivroPk;
 import org.marqueserick.clubedolivro.repository.EstoqueRepository;
 import org.marqueserick.clubedolivro.util.Acao;
 
@@ -48,7 +47,7 @@ public class EstoqueService {
     }
 
     public EstoqueDto editarEstoque(EstoqueDto dto) {
-        deletarEstoque(dto);
+        deletarEstoque(dto.getLivro());
         return adicionarEstoque(dto);
     }
 
@@ -70,9 +69,8 @@ public class EstoqueService {
         }
         throw new NotAllowedException("Livro já existe em estoque");
     }
-
-    public void deletarEstoque(EstoqueDto dto){
-        Estoque livroSelecionado = buscarPorLivro(dto.getLivro());
+    public void deletarEstoque(Long id) {
+        Estoque livroSelecionado = buscarPorLivro(id);
         repository.delete(livroSelecionado);
     }
 
@@ -95,4 +93,6 @@ public class EstoqueService {
         existeLivro(dto.getLivro());
         existeEditora(dto.getEditora());
     }
+
+
 }

@@ -59,4 +59,11 @@ public class EstoqueController {
     public EstoqueDto alterarQuantidadeLivro(@QueryParam("cod")Long livro, @QueryParam("acao") Acao acao, @QueryParam("quantidade")Integer quantidade){
         return service.alterarQuantidadeLivro(livro, acao, quantidade);
     }
+
+    @DELETE
+    @Path("/{cod_livro}")
+    @Operation(description = "deleta um livro do estoque", summary = "deletar do estoque")
+    public void deletarEstoque(@PathParam("cod_livro")Long id){
+        service.deletarEstoque(id);
+    }
 }

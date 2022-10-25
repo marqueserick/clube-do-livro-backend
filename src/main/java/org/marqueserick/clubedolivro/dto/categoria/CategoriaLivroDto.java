@@ -1,7 +1,6 @@
 package org.marqueserick.clubedolivro.dto.categoria;
 
 import lombok.*;
-import org.marqueserick.clubedolivro.dto.livro.LivroDto;
 
 import javax.json.bind.annotation.JsonbProperty;
 

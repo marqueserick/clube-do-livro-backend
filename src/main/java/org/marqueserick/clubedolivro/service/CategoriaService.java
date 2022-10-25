@@ -4,7 +4,6 @@ import org.marqueserick.clubedolivro.dto.categoria.CategoriaDto;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDtoEditar;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDtoSalvar;
 import org.marqueserick.clubedolivro.factory.CategoriaFactory;
-import org.marqueserick.clubedolivro.factory.LivroFactory;
 import org.marqueserick.clubedolivro.model.Categoria;
 import org.marqueserick.clubedolivro.repository.CategoriaRepository;
 

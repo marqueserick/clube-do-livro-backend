@@ -10,8 +10,11 @@ import javax.ws.rs.core.Application;
 
 @OpenAPIDefinition(
         tags = {
-                @Tag(name = "Livro Controller", description = "Requisições para Livros"),
-                @Tag(name = "Editora Controller", description = "Requisiçoes para Editoras")
+                @Tag(name = "Livro Controller", description = "Requisições para livros"),
+                @Tag(name = "Editora Controller", description = "Requisiçoes para editoras"),
+                @Tag(name = "Estoque Controller", description = "Requisições para estoque"),
+                @Tag(name = "Categoria Controller", description = "Requisições para categorias"),
+                @Tag(name = "CategoriaLivro Controller", description = "Requisições para categoriaLivro")
 },
         info = @Info(
                 title="Clube do Livro",

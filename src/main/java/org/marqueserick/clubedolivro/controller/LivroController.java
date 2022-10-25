@@ -4,7 +4,9 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.livro.LivroDto;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoEditar;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoSalvar;
+import org.marqueserick.clubedolivro.model.Livro;
 import org.marqueserick.clubedolivro.service.LivroService;
+import org.marqueserick.clubedolivro.util.FiltroEstoque;
 
 import javax.ws.rs.*;
 import java.util.List;
@@ -52,6 +54,13 @@ public class LivroController {
     @Operation(description = "Exclui um livro existente", summary = "deletar livro")
     public void deletarLivro(@PathParam("id") Long id){
         service.deletarLivro(id);
+    }
+
+    @GET
+    @Path("/filtrar")
+    @Operation(description = "filtra livros que não estão no estoque ou estão zerados", summary = "listar livros fora de estoque")
+    public List<LivroDto> listarLivrosSemEstoque(@QueryParam("estoque") FiltroEstoque filtro){
+            return service.listarLivrosSemEstoque(filtro);
     }
 
 }

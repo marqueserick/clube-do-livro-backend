@@ -7,6 +7,7 @@ import org.marqueserick.clubedolivro.factory.EditoraFactory;
 import org.marqueserick.clubedolivro.factory.LivroFactory;
 import org.marqueserick.clubedolivro.model.Livro;
 import org.marqueserick.clubedolivro.repository.LivroRepository;
+import org.marqueserick.clubedolivro.util.FiltroEstoque;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -50,6 +51,16 @@ public class LivroService {
     public void deletarLivro(Long id) {
         Livro excluirLivro = buscarLivroPorId(id);
         repository.delete(excluirLivro);
+    }
+
+    public List<LivroDto> listarLivrosSemEstoque(FiltroEstoque filtro) {
+        switch (filtro) {
+            case SEM_CADASTRO:
+                return factory.toDtoList(repository.livrosSemCadastroEstoque());
+            case ZERADO:
+                return factory.toDtoList(repository.livrosEstoqueZerado());
+            default: return null;
+        }
     }
 
     private Livro buscarLivroPorId(Long id) {

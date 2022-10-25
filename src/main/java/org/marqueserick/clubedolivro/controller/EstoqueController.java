@@ -31,20 +31,26 @@ public class EstoqueController {
     @Path("/porEditora")
     @Operation(description = "lista quantidade de todos os livros por editora", summary = "listar por editora")
     public List<EstoqueDto> listarEstoquePorEditora(@QueryParam("cod")Long editora){
-        return service.listarEstoquePorEditora("cod_editora", editora);
+        return service.listarEstoquePorEditora(editora);
     }
 
     @GET
     @Path("/porLivro")
     @Operation(description = "lista quantidade por livro", summary = "listar por livro")
     public EstoqueDto listarEstoquePorLivro(@QueryParam("cod")Long livro){
-        return service.listarEstoquePorLivro("cod_livro", livro);
+        return service.listarEstoquePorLivro(livro);
     }
 
     @POST
     @Operation(description = "adiciona um livro ao estoque", summary = "adicionar livro ao estoque")
-    public EstoqueDto adicionarLivro(EstoqueDto dto){
-        return service.adicionarLivroEstoque(dto);
+    public EstoqueDto adicionarEstoque(EstoqueDto dto){
+        return service.adicionarEstoque(dto);
+    }
+
+    @PUT
+    @Operation(description = "edita informações de livro em estoque", summary = "editar livro em estoque")
+    public EstoqueDto editarEstoque(EstoqueDto dto){
+        return service.editarEstoque(dto);
     }
 
     @PUT

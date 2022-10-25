@@ -5,6 +5,7 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import org.marqueserick.clubedolivro.dto.estoque.EstoqueDto;
 import org.marqueserick.clubedolivro.factory.EstoqueFactory;
 import org.marqueserick.clubedolivro.model.Estoque;
+import org.marqueserick.clubedolivro.model.EstoqueLivroPk;
 import org.marqueserick.clubedolivro.repository.EstoqueRepository;
 import org.marqueserick.clubedolivro.util.Acao;
 
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static org.marqueserick.clubedolivro.util.validador.EditoraValidador.existeEditora;
 import static org.marqueserick.clubedolivro.util.validador.LivroValidador.existeLivro;
 
 @Transactional
@@ -34,13 +36,20 @@ public class EstoqueService {
         return factory.toDtoList(repository.listAll());
     }
 
-    public List<EstoqueDto> listarEstoquePorEditora(String campo, Long editora) {
-       PanacheQuery<Estoque> estoquePorEditora = repository.find(campo,editora);
-       return factory.toDtoList(estoquePorEditora.stream().collect(Collectors.toList()));
+    public List<EstoqueDto> listarEstoquePorEditora(Long editora) {
+       PanacheQuery<Estoque> estoquePorEditora = repository.find("cod_editora",editora);
+       List<Estoque> listaEstoquePorEditora = estoquePorEditora.stream().collect(Collectors.toList());
+       if(listaEstoquePorEditora.size() == 0) throw new NotFoundException();
+       return factory.toDtoList(listaEstoquePorEditora);
     }
 
-    public EstoqueDto listarEstoquePorLivro(String campo, Long livro) {
+    public EstoqueDto listarEstoquePorLivro(Long livro) {
         return factory.toDto(buscarPorLivro(livro));
+    }
+
+    public EstoqueDto editarEstoque(EstoqueDto dto) {
+        deletarEstoque(dto);
+        return adicionarEstoque(dto);
     }
 
     public EstoqueDto alterarQuantidadeLivro(Long livro, Acao acao, Integer quantidade) {
@@ -50,11 +59,11 @@ public class EstoqueService {
         return factory.toDto(livroSelecionado);
     }
 
-    public EstoqueDto adicionarLivroEstoque(EstoqueDto dto) {
+    public EstoqueDto adicionarEstoque(EstoqueDto dto) {
         try{
             buscarPorLivro(dto.getLivro());
         }catch (NotFoundException e){
-             existeLivro(dto.getLivro());
+             validarPkComposta(dto);
              Estoque novoEstoque = factory.toEstoque(dto);
              repository.persist(novoEstoque);
              return factory.toDto(novoEstoque);
@@ -62,9 +71,13 @@ public class EstoqueService {
         throw new NotAllowedException("Livro já existe em estoque");
     }
 
+    public void deletarEstoque(EstoqueDto dto){
+        Estoque livroSelecionado = buscarPorLivro(dto.getLivro());
+        repository.delete(livroSelecionado);
+    }
+
     private Integer atualizarQuantidade(Acao acao, Integer quantidade, Integer quantidadeAtual) {
         switch (acao){
-            case CORRIGIR: return quantidade;
             case ADICIONAR: return quantidadeAtual + quantidade;
             case SUBTRAIR: if(quantidade > quantidadeAtual) return 0;
                 return quantidadeAtual - quantidade;
@@ -78,5 +91,8 @@ public class EstoqueService {
         throw new NotFoundException();
     }
 
-
+    private void validarPkComposta(EstoqueDto dto){
+        existeLivro(dto.getLivro());
+        existeEditora(dto.getEditora());
+    }
 }

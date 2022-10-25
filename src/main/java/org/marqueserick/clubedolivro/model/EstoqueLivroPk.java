@@ -12,12 +12,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Builder
-@EqualsAndHashCode
 public class EstoqueLivroPk implements Serializable {
 
     private static final long serialVersionUID = -6143937267937399840L;
 
-    @Column(name = "cod_livro", unique = true)
+    @Column(name = "cod_livro")
     private Long livro;
 
     @Column(name = "cod_editora")

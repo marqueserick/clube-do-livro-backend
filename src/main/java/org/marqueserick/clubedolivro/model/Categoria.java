@@ -23,6 +23,9 @@ public class Categoria {
     private String nome;
 
     @ManyToMany
-    @JoinTable(name = "categoria_livro", joinColumns = @JoinColumn(name = "cod_categoria"), inverseJoinColumns = @JoinColumn(name = "cod_livro"))
+    @JoinTable(
+            name = "categoria_livro",
+            joinColumns = @JoinColumn(name = "cod_categoria"),
+            inverseJoinColumns = @JoinColumn(name = "cod_livro"))
     private List<Livro> livros;
 }

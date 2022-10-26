@@ -1,9 +1,8 @@
 package org.marqueserick.clubedolivro.controller;
 
-import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.marqueserick.clubedolivro.dto.categoria.CategoriaLivroDto;
-import org.marqueserick.clubedolivro.dto.categoria.CategoriaLivroDtoDetalhes;
+import org.marqueserick.clubedolivro.dto.categoriaLivro.CategoriaLivroDto;
+import org.marqueserick.clubedolivro.dto.categoriaLivro.CategoriaLivroDtoResposta;
 import org.marqueserick.clubedolivro.service.CategoriaLivroService;
 
 import javax.ws.rs.*;
@@ -26,14 +25,14 @@ public class CategoriaLivroController {
     @POST
     @Path("/categoria")
     @Operation(description = "adiciona uma nova relação categoria-livro", summary = "adicionar relação categoria-livro")
-    public CategoriaLivroDtoDetalhes adicionarCategoria(CategoriaLivroDto dto){
+    public CategoriaLivroDtoResposta adicionarCategoria(CategoriaLivroDto dto){
         return service.adicionarCategoria(dto);
     }
 
     @POST
     @Path("/categorias")
     @Operation(description = "adiciona uma lista de relações categoria-livro", summary = "adicionar lista categoria-livro")
-    public List<CategoriaLivroDtoDetalhes> adicionarCategoria(List<CategoriaLivroDto> dto){
+    public List<CategoriaLivroDtoResposta> adicionarCategoria(List<CategoriaLivroDto> dto){
         return service.adicionarCategoria(dto);
     }
 

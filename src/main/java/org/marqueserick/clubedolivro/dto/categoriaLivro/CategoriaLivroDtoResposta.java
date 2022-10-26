@@ -1,6 +1,7 @@
-package org.marqueserick.clubedolivro.dto.categoria;
+package org.marqueserick.clubedolivro.dto.categoriaLivro;
 
 import lombok.*;
+import org.marqueserick.clubedolivro.dto.categoria.CategoriaDto;
 import org.marqueserick.clubedolivro.dto.livro.LivroDto;
 
 @AllArgsConstructor
@@ -8,7 +9,7 @@ import org.marqueserick.clubedolivro.dto.livro.LivroDto;
 @Getter
 @Setter
 @Builder
-public class CategoriaLivroDtoDetalhes {
+public class CategoriaLivroDtoResposta {
 
     private LivroDto livro;
 

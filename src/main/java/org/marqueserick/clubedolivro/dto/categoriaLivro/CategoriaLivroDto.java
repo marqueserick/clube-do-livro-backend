@@ -1,4 +1,4 @@
-package org.marqueserick.clubedolivro.dto.categoria;
+package org.marqueserick.clubedolivro.dto.categoriaLivro;
 
 import lombok.*;
 

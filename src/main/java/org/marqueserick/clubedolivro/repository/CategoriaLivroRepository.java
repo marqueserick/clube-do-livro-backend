@@ -1,7 +1,7 @@
 package org.marqueserick.clubedolivro.repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import org.marqueserick.clubedolivro.dto.categoria.CategoriaLivroDto;
+import org.marqueserick.clubedolivro.dto.categoriaLivro.CategoriaLivroDto;
 import org.marqueserick.clubedolivro.model.Categoria;
 import org.marqueserick.clubedolivro.model.CategoriaLivro;
 import org.marqueserick.clubedolivro.model.Livro;

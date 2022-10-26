@@ -1,7 +1,7 @@
 package org.marqueserick.clubedolivro.service;
 
-import org.marqueserick.clubedolivro.dto.categoria.CategoriaLivroDto;
-import org.marqueserick.clubedolivro.dto.categoria.CategoriaLivroDtoDetalhes;
+import org.marqueserick.clubedolivro.dto.categoriaLivro.CategoriaLivroDto;
+import org.marqueserick.clubedolivro.dto.categoriaLivro.CategoriaLivroDtoResposta;
 import org.marqueserick.clubedolivro.factory.CategoriaLivroFactory;
 import org.marqueserick.clubedolivro.model.Categoria;
 import org.marqueserick.clubedolivro.model.CategoriaLivro;
@@ -29,7 +29,7 @@ public class CategoriaLivroService {
         this.factory = factory;
     }
 
-    public CategoriaLivroDtoDetalhes adicionarCategoria(CategoriaLivroDto dto) {
+    public CategoriaLivroDtoResposta adicionarCategoria(CategoriaLivroDto dto) {
         if (repository.findCategoriaLivro(dto) == null){
             Livro livro = getLivro(dto.getLivro());
             Categoria categoria = getCategoria(dto.getCategoria());
@@ -40,8 +40,8 @@ public class CategoriaLivroService {
         throw new NotAllowedException("Categoria e livro já estão relacionados");
     }
 
-    public List<CategoriaLivroDtoDetalhes> adicionarCategoria(List<CategoriaLivroDto> dto){
-        List<CategoriaLivroDtoDetalhes> dtoList = new ArrayList<>();
+    public List<CategoriaLivroDtoResposta> adicionarCategoria(List<CategoriaLivroDto> dto){
+        List<CategoriaLivroDtoResposta> dtoList = new ArrayList<>();
 
         for( CategoriaLivroDto d : dto){
             try{

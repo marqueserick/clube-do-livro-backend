@@ -9,6 +9,8 @@ import org.marqueserick.clubedolivro.model.Livro;
 import org.marqueserick.clubedolivro.repository.CategoriaLivroRepository;
 import org.marqueserick.clubedolivro.repository.CategoriaRepository;
 import org.marqueserick.clubedolivro.repository.LivroRepository;
+import org.marqueserick.clubedolivro.util.CategoriaUtil;
+import org.marqueserick.clubedolivro.util.LivroUtil;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -31,8 +33,8 @@ public class CategoriaLivroService {
 
     public CategoriaLivroDtoResposta adicionarCategoria(CategoriaLivroDto dto) {
         if (repository.findCategoriaLivro(dto) == null){
-            Livro livro = getLivro(dto.getLivro());
-            Categoria categoria = getCategoria(dto.getCategoria());
+            Livro livro = LivroUtil.getLivro(dto.getLivro());
+            Categoria categoria = CategoriaUtil.getCategoria(dto.getCategoria());
 
             return factory.toDto(repository.adicionar(livro,categoria));
         }
@@ -60,15 +62,5 @@ public class CategoriaLivroService {
 
         repository.delete(categoriaLivro);
 
-    }
-
-    private static Categoria getCategoria(Long categoria) {
-        CategoriaRepository categoriaRepository = new CategoriaRepository();
-        return categoriaRepository.findById(categoria);
-    }
-
-    private static Livro getLivro(Long livro) {
-        LivroRepository livroRepository = new LivroRepository();
-        return livroRepository.findById(livro);
     }
 }

@@ -13,6 +13,9 @@ import org.marqueserick.clubedolivro.repository.LivroRepository;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotAllowedException;
+import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Transactional
 @ApplicationScoped
@@ -27,15 +30,36 @@ public class CategoriaLivroService {
     }
 
     public CategoriaLivroDtoDetalhes adicionarCategoria(CategoriaLivroDto dto) {
-        CategoriaLivro cl = repository.findCategoriaLivro(dto);
-        if (cl == null){
+        if (repository.findCategoriaLivro(dto) == null){
             Livro livro = getLivro(dto.getLivro());
             Categoria categoria = getCategoria(dto.getCategoria());
-            CategoriaLivro salvarcl = new CategoriaLivro();
+
             return factory.toDto(repository.adicionar(livro,categoria));
         }
 
         throw new NotAllowedException("Categoria e livro já estão relacionados");
+    }
+
+    public List<CategoriaLivroDtoDetalhes> adicionarCategoria(List<CategoriaLivroDto> dto){
+        List<CategoriaLivroDtoDetalhes> dtoList = new ArrayList<>();
+
+        for( CategoriaLivroDto d : dto){
+            try{
+                dtoList.add(adicionarCategoria(d));
+            }catch (Exception e){
+                break;
+            }
+        }
+
+        return dtoList;
+    }
+
+    public void deletarCategoria(CategoriaLivroDto dto) {
+        CategoriaLivro categoriaLivro = repository.findCategoriaLivro(dto);
+        if (categoriaLivro == null) throw new NotFoundException();
+
+        repository.delete(categoriaLivro);
+
     }
 
     private static Categoria getCategoria(Long categoria) {

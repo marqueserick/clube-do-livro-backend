@@ -4,11 +4,8 @@ import lombok.*;
 
 import javax.json.bind.annotation.JsonbProperty;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
-@Builder
+@Setter
 public class CategoriaDtoEditar {
 
     @JsonbProperty("cod_categoria")

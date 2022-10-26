@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class LivroDtoEditar {
     @JsonbProperty("cod_livro")
     private Long id;

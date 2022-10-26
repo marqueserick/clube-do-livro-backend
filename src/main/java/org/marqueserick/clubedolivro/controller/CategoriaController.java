@@ -4,8 +4,6 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDto;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDtoEditar;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDtoSalvar;
-import org.marqueserick.clubedolivro.dto.livro.LivroDto;
-import org.marqueserick.clubedolivro.dto.livro.LivroDtoEditar;
 import org.marqueserick.clubedolivro.service.CategoriaService;
 
 import javax.ws.rs.*;

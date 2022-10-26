@@ -8,9 +8,6 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class EditoraDtoSalvar {
 
     @NotNull

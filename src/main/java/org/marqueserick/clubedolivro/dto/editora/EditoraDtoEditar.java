@@ -5,11 +5,8 @@ import lombok.*;
 import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.Size;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class EditoraDtoEditar {
     @JsonbProperty("cod_editora")
     private Long id;

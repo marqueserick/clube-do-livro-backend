@@ -16,6 +16,7 @@ public class LivroFactory {
                 .nome(livro.getNome())
                 .preco(livro.getPreco())
                 .anoPublicacao(livro.getAnoPublicacao())
+                .categorias(new CategoriaFactory().toDtoList(livro.getCategorias()))
                 .isbn(livro.getIsbn())
                 .build();
     }

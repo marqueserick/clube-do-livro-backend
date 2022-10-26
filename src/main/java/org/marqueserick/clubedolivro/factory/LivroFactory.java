@@ -29,6 +29,7 @@ public class LivroFactory {
                 .isbn(livro.getIsbn())
                 .editora(new EditoraFactory().toDto(livro.getEditora()))
                 .categorias(new CategoriaFactory().toDtoList(livro.getCategorias()))
+                .autores(new AutorFactory().toDtoList(livro.getAutores()))
                 .build();
     }
 

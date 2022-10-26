@@ -14,7 +14,8 @@ import javax.ws.rs.core.Application;
                 @Tag(name = "Editora Controller", description = "Requisiçoes para editoras"),
                 @Tag(name = "Estoque Controller", description = "Requisições para estoque"),
                 @Tag(name = "Categoria Controller", description = "Requisições para categorias"),
-                @Tag(name = "Categoria Livro Controller", description = "Requisições para categoriaLivro")
+                @Tag(name = "Categoria Livro Controller", description = "Requisições para categoriaLivro"),
+                @Tag(name = "Autor Controller", description = "Requisições para autores")
 },
         info = @Info(
                 title="Clube do Livro",

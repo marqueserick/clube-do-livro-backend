@@ -40,7 +40,8 @@ public class Livro {
     @ManyToMany(mappedBy = "livros")
     private List<Categoria> categorias;
 
-    //autores
+    @ManyToMany(mappedBy = "livros")
+    private List<Autor> autores;
 
 
 }

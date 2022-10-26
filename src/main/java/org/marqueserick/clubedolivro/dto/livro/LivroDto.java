@@ -2,6 +2,7 @@ package org.marqueserick.clubedolivro.dto.livro;
 
 import io.smallrye.common.constraint.NotNull;
 import lombok.*;
+import org.marqueserick.clubedolivro.dto.autor.AutorDto;
 import org.marqueserick.clubedolivro.dto.categoria.CategoriaDto;
 import org.marqueserick.clubedolivro.dto.editora.EditoraDto;
 
@@ -39,5 +40,7 @@ public class LivroDto {
     private EditoraDto editora;
 
     private List<CategoriaDto> categorias;
+
+    private List<AutorDto> autores;
 
 }

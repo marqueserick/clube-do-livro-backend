@@ -3,7 +3,7 @@ package org.marqueserick.clubedolivro.controller;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.estoque.EstoqueDto;
 import org.marqueserick.clubedolivro.service.EstoqueService;
-import org.marqueserick.clubedolivro.util.Acao;
+import org.marqueserick.clubedolivro.enums.Acao;
 
 import javax.ws.rs.*;
 import java.util.List;

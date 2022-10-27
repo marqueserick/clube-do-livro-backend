@@ -6,7 +6,7 @@ import org.marqueserick.clubedolivro.dto.estoque.EstoqueDto;
 import org.marqueserick.clubedolivro.factory.EstoqueFactory;
 import org.marqueserick.clubedolivro.model.Estoque;
 import org.marqueserick.clubedolivro.repository.EstoqueRepository;
-import org.marqueserick.clubedolivro.util.Acao;
+import org.marqueserick.clubedolivro.enums.Acao;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;

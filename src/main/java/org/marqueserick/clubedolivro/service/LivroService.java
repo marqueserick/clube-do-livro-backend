@@ -7,7 +7,7 @@ import org.marqueserick.clubedolivro.factory.EditoraFactory;
 import org.marqueserick.clubedolivro.factory.LivroFactory;
 import org.marqueserick.clubedolivro.model.Livro;
 import org.marqueserick.clubedolivro.repository.LivroRepository;
-import org.marqueserick.clubedolivro.util.FiltroEstoque;
+import org.marqueserick.clubedolivro.enums.FiltroEstoque;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;

@@ -4,9 +4,8 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.livro.LivroDto;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoEditar;
 import org.marqueserick.clubedolivro.dto.livro.LivroDtoSalvar;
-import org.marqueserick.clubedolivro.model.Livro;
 import org.marqueserick.clubedolivro.service.LivroService;
-import org.marqueserick.clubedolivro.util.FiltroEstoque;
+import org.marqueserick.clubedolivro.enums.FiltroEstoque;
 
 import javax.ws.rs.*;
 import java.util.List;

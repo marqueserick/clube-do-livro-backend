@@ -1,6 +1,7 @@
 package org.marqueserick.clubedolivro.model;
 
 import lombok.*;
+import org.marqueserick.clubedolivro.enums.Estado;
 
 import javax.persistence.*;
 
@@ -32,7 +33,8 @@ public class Endereco {
     private String cidade;
 
     @Column(length = 2, nullable = false)
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    private Estado estado;
 
     private String cep;
 }

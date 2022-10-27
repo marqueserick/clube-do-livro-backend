@@ -29,17 +29,13 @@ public class Cliente {
 
     private String email;
 
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, optional = false)
     @PrimaryKeyJoinColumn
     private Endereco endereco;
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    private PessoaFisica pessoaFisica;
-
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private PessoaJuridica pessoaJuridica;
+    private Pessoa pessoa;
 
 
 }

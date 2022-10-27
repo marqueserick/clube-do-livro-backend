@@ -17,4 +17,14 @@ public class EnderecoFactory {
                 .cep(endereco.getCep())
                 .build();
     }
+
+    public Endereco toEndereco(EnderecoDto dto) {
+        return Endereco.builder()
+                .endereco(dto.getEndereco())
+                .bairro(dto.getBairro())
+                .cidade(dto.getCidade())
+                .estado(dto.getEstado())
+                .cep(dto.getCep())
+                .build();
+    }
 }

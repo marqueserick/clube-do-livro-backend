@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "pj")
 @AllArgsConstructor
@@ -11,16 +12,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-public class PessoaJuridica {
+public class PessoaJuridica extends Pessoa {
 
     @Id
     @Column(name = "cod_cliente")
     private Long id;
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "cod_cliente")
-    private Cliente cliente;
 
     @Column(nullable = false)
     private String cnpj;

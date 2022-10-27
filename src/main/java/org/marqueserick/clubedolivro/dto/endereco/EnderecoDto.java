@@ -11,8 +11,7 @@ import javax.json.bind.annotation.JsonbProperty;
 @Setter
 @Builder
 public class EnderecoDto {
-
-
+    
     @JsonbProperty("residencia")
     private String endereco;
     private String bairro;

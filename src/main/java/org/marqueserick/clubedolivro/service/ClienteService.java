@@ -1,9 +1,9 @@
 package org.marqueserick.clubedolivro.service;
 
 import org.marqueserick.clubedolivro.dto.cliente.ClienteDto;
+import org.marqueserick.clubedolivro.dto.cliente.ClienteDtoSalvar;
 import org.marqueserick.clubedolivro.factory.ClienteFactory;
 import org.marqueserick.clubedolivro.model.Cliente;
-import org.marqueserick.clubedolivro.model.Endereco;
 import org.marqueserick.clubedolivro.repository.ClienteRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -35,18 +35,25 @@ public class ClienteService {
     public ClienteDto editarCliente(ClienteDto dto) {
         Cliente cliente = buscarPorId(dto.getId());
 
-        cliente.setNome(dto.getNome());
-        cliente.setEmail(dto.getEmail());
-        cliente.setTelefoneAuxiliar(dto.getTelefoneAuxiliar());
-        cliente.setTelefonePrincipal(dto.getTelefonePrincipal());
-
         repository.persist(cliente);
         return factory.toDtoDetalhes(cliente);
+    }
+
+    public ClienteDto adicionarCliente(ClienteDtoSalvar dto) {
+        Cliente cliente = novoCliente(dto);
+        repository.persist(cliente);
+        return factory.toDto(cliente);
     }
 
     private Cliente buscarPorId(Long id) {
         Cliente cliente = repository.findById(id);
         if(cliente == null) throw new NotFoundException();
         return cliente;
+    }
+
+    private Cliente novoCliente(ClienteDtoSalvar dto) {
+        return null;
+
+
     }
 }

@@ -11,16 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-public class PessoaFisica {
-
-    @Id
-    @Column(name = "cod_cliente")
-    private Long id;
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "cod_cliente")
-    private Cliente cliente;
+public class PessoaFisica extends Pessoa{
 
     @Column(nullable = false)
     private String cpf;

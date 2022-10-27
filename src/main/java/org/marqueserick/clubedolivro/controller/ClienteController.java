@@ -2,6 +2,7 @@ package org.marqueserick.clubedolivro.controller;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.marqueserick.clubedolivro.dto.cliente.ClienteDto;
+import org.marqueserick.clubedolivro.dto.cliente.ClienteDtoSalvar;
 import org.marqueserick.clubedolivro.service.ClienteService;
 
 import javax.ws.rs.*;
@@ -38,5 +39,11 @@ public class ClienteController {
     @Operation(description = "edita um cliente existente", summary = "editar cliente")
     public ClienteDto editarCliente(ClienteDto dto){
         return service.editarCliente(dto);
+    }
+
+    @POST
+    @Operation(description = "adiciona um novo cliente", summary = "adicionar cliente")
+    public ClienteDto adicionarCliente(ClienteDtoSalvar dto){
+        return service.adicionarCliente(dto);
     }
 }

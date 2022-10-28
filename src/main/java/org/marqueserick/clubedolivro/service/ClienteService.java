@@ -1,7 +1,8 @@
 package org.marqueserick.clubedolivro.service;
 
 import org.marqueserick.clubedolivro.dto.cliente.ClienteDto;
-import org.marqueserick.clubedolivro.dto.cliente.ClienteDtoSalvar;
+import org.marqueserick.clubedolivro.dto.cliente.ClientePessoaFisicaDto;
+import org.marqueserick.clubedolivro.dto.cliente.ClientePessoaJuridicaDto;
 import org.marqueserick.clubedolivro.factory.ClienteFactory;
 import org.marqueserick.clubedolivro.model.Cliente;
 import org.marqueserick.clubedolivro.repository.ClienteRepository;
@@ -39,7 +40,13 @@ public class ClienteService {
         return factory.toDtoDetalhes(cliente);
     }
 
-    public ClienteDto adicionarCliente(ClienteDtoSalvar dto) {
+    public ClienteDto adicionarCliente(ClientePessoaFisicaDto dto) {
+        Cliente cliente = novoCliente(dto);
+        repository.persist(cliente);
+        return factory.toDto(cliente);
+    }
+
+    public ClienteDto adicionarCliente(ClientePessoaJuridicaDto dto) {
         Cliente cliente = novoCliente(dto);
         repository.persist(cliente);
         return factory.toDto(cliente);
@@ -51,9 +58,17 @@ public class ClienteService {
         return cliente;
     }
 
-    private Cliente novoCliente(ClienteDtoSalvar dto) {
-        return null;
+    private Cliente novoCliente(ClientePessoaFisicaDto dto) {
+        Cliente cliente = factory.toCliente(dto);
+        cliente.getEndereco().setCliente(cliente);
+        cliente.getPessoa().setCliente(cliente);
+        return cliente;
+    }
 
-
+    private Cliente novoCliente(ClientePessoaJuridicaDto dto) {
+        Cliente cliente = factory.toCliente(dto);
+        cliente.getEndereco().setCliente(cliente);
+        cliente.getPessoa().setCliente(cliente);
+        return cliente;
     }
 }

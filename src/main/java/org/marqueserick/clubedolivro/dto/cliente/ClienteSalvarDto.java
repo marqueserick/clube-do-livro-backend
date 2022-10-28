@@ -3,15 +3,15 @@ package org.marqueserick.clubedolivro.dto.cliente;
 import lombok.Getter;
 import lombok.Setter;
 import org.marqueserick.clubedolivro.dto.endereco.EnderecoDto;
-import org.marqueserick.clubedolivro.dto.pessoa.PessoaFisicaDto;
-import org.marqueserick.clubedolivro.dto.pessoa.PessoaJuridicaDto;
+import org.marqueserick.clubedolivro.dto.pessoa.PessoaDto;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class ClienteDtoSalvar {
+public class ClienteSalvarDto {
+
     @JsonbProperty("nome_cliente")
     private String nome;
 
@@ -25,7 +25,7 @@ public class ClienteDtoSalvar {
 
     private String email;
 
-    private EnderecoDto enderecoDto;
-    private PessoaFisicaDto pessoaFisica;
-    private PessoaJuridicaDto pessoaJuridica;
+    private EnderecoDto endereco;
+
+    private PessoaDto pessoa;
 }

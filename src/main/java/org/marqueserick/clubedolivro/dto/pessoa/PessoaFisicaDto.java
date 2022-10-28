@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class PessoaFisicaDto {
+public class PessoaFisicaDto extends PessoaDto{
 
     private String cpf;
     private String rg;

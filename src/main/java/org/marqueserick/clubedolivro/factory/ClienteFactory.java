@@ -1,9 +1,8 @@
 package org.marqueserick.clubedolivro.factory;
 
 import org.marqueserick.clubedolivro.dto.cliente.ClienteDto;
-import org.marqueserick.clubedolivro.dto.cliente.ClienteDtoSalvar;
+import org.marqueserick.clubedolivro.dto.cliente.ClienteSalvarDto;
 import org.marqueserick.clubedolivro.model.Cliente;
-import org.marqueserick.clubedolivro.model.PessoaJuridica;
 
 import javax.inject.Singleton;
 import java.util.List;
@@ -30,36 +29,18 @@ public class ClienteFactory {
                 .telefoneAuxiliar(cliente.getTelefoneAuxiliar())
                 .email(cliente.getEmail())
                 .endereco(new EnderecoFactory().toDto(cliente.getEndereco()))
+                .pessoa(new PessoaFactory().toDto(cliente.getPessoa()))
                 .build();
     }
-    public Cliente toCliente(ClienteDtoSalvar dto) {
-        return Cliente.builder()
-                .nome(dto.getNome())
-                .telefonePrincipal(dto.getTelefonePrincipal())
-                .telefoneAuxiliar(dto.getTelefoneAuxiliar())
-                .email(dto.getEmail())
-                .endereco(new EnderecoFactory().toEndereco(dto.getEnderecoDto()))
-                .build();
-    }
-
-    public Cliente toClientePessoaFisica(ClienteDtoSalvar dto) {
-        return Cliente.builder()
-                .nome(dto.getNome())
-                .telefonePrincipal(dto.getTelefonePrincipal())
-                .telefoneAuxiliar(dto.getTelefoneAuxiliar())
-                .email(dto.getEmail())
-                .endereco(new EnderecoFactory().toEndereco(dto.getEnderecoDto()))
-                .build();
-    }
-
-    public Cliente toClientePessoaJuridica(ClienteDtoSalvar dto) {
-        return Cliente.builder()
-                .nome(dto.getNome())
-                .telefonePrincipal(dto.getTelefonePrincipal())
-                .telefoneAuxiliar(dto.getTelefoneAuxiliar())
-                .email(dto.getEmail())
-                .endereco(new EnderecoFactory().toEndereco(dto.getEnderecoDto()))
-                .build();
+    public Cliente toCliente(ClienteSalvarDto dto) {
+            return Cliente.builder()
+                    .nome(dto.getNome())
+                    .telefonePrincipal(dto.getTelefonePrincipal())
+                    .telefoneAuxiliar(dto.getTelefoneAuxiliar())
+                    .email(dto.getEmail())
+                    .endereco(new EnderecoFactory().toEndereco(dto.getEndereco()))
+                    .pessoa(new PessoaFactory().toPessoa((dto.getPessoa())))
+                    .build();
     }
 
     public List<ClienteDto> toDtoList(List<Cliente> clientes) {

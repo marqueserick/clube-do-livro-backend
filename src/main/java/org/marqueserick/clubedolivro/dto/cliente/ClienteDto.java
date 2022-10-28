@@ -2,6 +2,7 @@ package org.marqueserick.clubedolivro.dto.cliente;
 
 import lombok.*;
 import org.marqueserick.clubedolivro.dto.endereco.EnderecoDto;
+import org.marqueserick.clubedolivro.dto.pessoa.PessoaDto;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.Size;
@@ -29,4 +30,6 @@ public class ClienteDto {
 
     private String email;
     private EnderecoDto endereco;
+
+    private PessoaDto pessoa;
 }

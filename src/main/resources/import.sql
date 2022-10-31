@@ -32,3 +32,7 @@ insert into endereco values (1,'Parque Nações Unidas','08999-000','São Paulo'
 insert into pf values (1,'65999193087','181187474');
 insert into pj values (2,'41152621000178','515687508254');
 
+insert into pedido values (1,date('2022-10-25'), 'CONCLUIDO',49,1);
+
+insert into pedido_livro values (2,1,2);
+
